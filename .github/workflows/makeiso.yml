@@ -9,11 +9,15 @@ jobs:
   build:
    runs-on: ubuntu-latest
    container:
-     image: archlinux
+     image: archlinux:latest
      options: --privileged
    steps:
      - name: Checkout 
        uses: actions/checkout@v4
+     - name: Install dependencies
+       run: pacman -Sy --noconfirm archiso syslinux grub xorriso dosfstools efibootmgr
+       shell: bash
      - name: Build the ISO
-       uses: ./.github/actions
+       run: mkarchiso -v -w ./build -o ./out ./ArchBluesProfile
+       shell: bash
     
