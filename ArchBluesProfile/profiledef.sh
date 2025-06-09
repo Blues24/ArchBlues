@@ -9,7 +9,7 @@ iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
 install_dir="Builds"
 buildmodes=('iso')
 bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito' 
-            'uefi-x64.systemd-boot.esp''uefi-x64.systemd-boot.eltorito' 
+            'uefi-x64.systemd-boot.esp' 'uefi-x64.systemd-boot.eltorito' 
 	   'uefi-x64.grub.esp' 'uefi-x64.grub.eltorito')
 arch="x86_64"
 pacman_conf="pacman.conf"
