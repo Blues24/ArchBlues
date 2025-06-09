@@ -15,9 +15,5 @@ jobs:
      - name: Checkout 
        uses: actions/checkout@v4
      - name: Build the ISO
-       uses: .github/actions/bootstrap
-     - name: Upload output
-       uses: actions/upload-artifact@v4
-       with:
-	name: ArchBlues-iso
-	path: out/ 
+       uses: ./.github/actions/bootstrap.yml
+    
