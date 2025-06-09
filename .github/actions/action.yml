@@ -6,7 +6,7 @@ runs:
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: pacman -Sy --noconfirm archiso
+    - run: pacman -Sy --noconfirm archiso base-devel efibootmgr edk2-ovmf gnupg grub openssl qemu-desktop 
       shell: bash
     - run: mkdir -p ./Build ./out
       shell: bash
