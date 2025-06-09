@@ -15,5 +15,5 @@ jobs:
      - name: Checkout 
        uses: actions/checkout@v4
      - name: Build the ISO
-       uses: ./.github/actions/action
+       uses: ./.github/actions/action.yml
     
