@@ -15,8 +15,15 @@ jobs:
      - name: Checkout 
        uses: actions/checkout@v4
      - name: Install dependencies
-       run: pacman -Sy --noconfirm archiso syslinux grub xorriso dosfstools efibootmgr
+       run: set -e pacman -Sy --noconfirm archiso syslinux grub xorriso dosfstools efibootmgr 
        shell: bash
+     - name: Cache pacman packages
+       uses: actions/cache@v3
+       with:
+        path: /var/cache/pacman/pkg
+        key: ${{ runner.os }}-pacman-${{ hashFiles('**/PKGBUILD') }}
+        restore-keys: |
+          ${{ runner.os }}-pacman-
      - name: Build the ISO
        run: mkarchiso -v -w ./build -o ./out ./ArchBluesProfile
        shell: bash
