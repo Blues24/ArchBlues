@@ -22,4 +22,18 @@ jobs:
      - name: Build the ISO
        run: mkarchiso -v -w ./build -o ./out ./ArchBluesProfile
        shell: bash
+     
+     - name: Upload ISO to Release
+       if: github.ref == 'refs/heads/main'
+       uses: softprops/action-gh-release@v2
+       with:
+          tag_name: ArchBlues-${{ github.run_id }}-${{ steps.date.outputs.date }}
+          name: ArchBlues-${{ steps.date.outputs.date }}
+          files: path/to/your.iso
+       env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+     - name: Get date
+       id: date
+       run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
     
