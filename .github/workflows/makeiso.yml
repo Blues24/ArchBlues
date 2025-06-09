@@ -1,0 +1,23 @@
+name: Build ArchBlues ISO
+
+on:
+  push:
+   branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+   runs-on: ubuntu-latest
+   container:
+     image: archlinux
+     options: --privileged
+   steps:
+     - name: Checkout 
+       uses: actions/checkout@v4
+     - name: Build the ISO
+       uses: .github/actions/bootstrap
+     - name: Upload output
+       uses: actions/upload-artifact@v4
+       with:
+	name: ArchBlues-iso
+	path: out/ 
