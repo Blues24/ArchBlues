@@ -1,4 +1,0 @@
-root:x:0:brltty,root
-wheel:x:10:root
-uucp:x:1000:root
-
